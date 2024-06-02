@@ -17,7 +17,6 @@
 
   // Function to bypass Shotzon
   function bypassShotzon() {
-    
     // Modify the URL to redirect through "go" and append encoded value of hidden input
     const clickarlinkValue = encodeURIComponent(
       document.querySelector('input[type="hidden"][name="clickarlink"]').value,
@@ -25,7 +24,6 @@
     window.location.href =
       window.location.href.replace("https://", "https://go.") +
       clickarlinkValue;
-    
   }
 
   // Execute the bypass function
