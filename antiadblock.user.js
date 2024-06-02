@@ -18,11 +18,9 @@
   function removeAntiAdBlock() {
     const adbDetected = document.getElementById("s65c");
     if (adbDetected) {
-      console.log(
-        "[Anti-Anti Adblock] Detected Anti-AdBlock element! Removing...",
-      );
+      
       adbDetected.parentNode.removeChild(adbDetected);
-      console.log("[Anti-Anti Adblock] Removed Anti-AdBlock element! ✅");
+      
       return true;
     }
     return false;
