@@ -16,7 +16,7 @@
     'use strict';
 
     function removeAntiAdBlock() {
-        var adbDetected = document.getElementById("s65c");
+        let adbDetected = document.getElementById("s65c");
         if (adbDetected) {
             console.log("[Anti-Anti Adblock] Detected Anti-AdBlock element! Removing...");
             adbDetected.parentNode.removeChild(adbDetected);
@@ -39,7 +39,7 @@
 
         if (!removeAntiAdBlock()) {
             // If not found, observe the DOM for changes
-            var observer = new MutationObserver(function(mutations) {
+            let observer = new MutationObserver(function(mutations) {
                 mutations.forEach(function() {
                     if (removeAntiAdBlock()) {
                         // Element found and removed, stop observing
