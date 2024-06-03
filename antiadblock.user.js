@@ -12,47 +12,51 @@
 // @description Bypasses anti-adblock on Shotzon
 // ==/UserScript==
 
-(function() {
-    'use strict';
+(function () {
+  "use strict";
 
-    function removeAntiAdBlock() {
-        let adbDetected = document.getElementById("s65c");
-        if (adbDetected) {
-            console.log("[Anti-Anti Adblock] Detected Anti-AdBlock element! Removing...");
-            adbDetected.parentNode.removeChild(adbDetected);
-            console.log("[Anti-Anti Adblock] Removed Anti-AdBlock element! ✅");
-            return true;
-        }
-        return false;
+  function removeAntiAdBlock() {
+    const adbDetected = document.getElementById("s65c");
+    if (adbDetected) {
+      console.log(
+        "[Anti-Anti Adblock] Detected Anti-AdBlock element! Removing...",
+      );
+      adbDetected.parentNode.removeChild(adbDetected);
+      console.log("[Anti-Anti Adblock] Removed Anti-AdBlock element! ✅");
+      return true;
     }
+    return false;
+  }
 
-    function bypassAntiAdBlock() {
-        // Show reCAPTCHA
-        document.querySelectorAll(".g-recaptcha").forEach(element => {
-            element.style.display = "block";
+  function bypassAntiAdBlock() {
+    // Show reCAPTCHA
+    document.querySelectorAll(".g-recaptcha").forEach((element) => {
+      element.style.display = "block";
+    });
+
+    // Show Captcha Check
+    document
+      .querySelectorAll(".btn-captcha, .captcha-check")
+      .forEach((element) => {
+        element.style.display = "block";
+      });
+
+    if (!removeAntiAdBlock()) {
+      // If not found, observe the DOM for changes
+      const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function () {
+          if (removeAntiAdBlock()) {
+            // Element found and removed, stop observing
+            observer.disconnect();
+          }
         });
+      });
 
-        // Show Captcha Check
-        document.querySelectorAll(".btn-captcha, .captcha-check").forEach(element => {
-            element.style.display = "block";
-        });
-
-        if (!removeAntiAdBlock()) {
-            // If not found, observe the DOM for changes
-            let observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function() {
-                    if (removeAntiAdBlock()) {
-                        // Element found and removed, stop observing
-                        observer.disconnect();
-                    }
-                });
-            });
-
-            // Start observing the document body for added nodes
-            observer.observe(document.body, { childList: true, subtree: true });
-        }
+      // Start observing the document body for added nodes
+      observer.observe(document.body, { childList: true, subtree: true });
     }
+  }
 
-    // Wait for the page to load
-    window.addEventListener('load', bypassAntiAdBlock, false);
+  // Wait for the page to load
+  window.addEventListener("load", bypassAntiAdBlock, false);
 })();
