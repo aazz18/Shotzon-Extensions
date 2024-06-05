@@ -13,7 +13,7 @@ Unfortunately, it is **impossible** to bypass the last download page of Shotzon 
 
 ## How do I install?
 
-1. Download any suitable user-script manager. I recommend [TamperMonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) for Chrome and [ViolentMonkey](https://chromewebstore.google.com/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag) for Firefox.
+1. Download any suitable user-script manager. I recommend [TamperMonkey](https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo) for Chrome and [ViolentMonkey](https://addons.mozilla.org/en-GB/firefox/addon/violentmonkey/) for Firefox.
 2. Install these scripts: [Anti-Anti Adblock Bypass](https://raw.githubusercontent.com/SleepingPig35/Shotzon-Extensions/main/antiadblock.user.js) and [First Page Captcha Bypass](https://raw.githubusercontent.com/SleepingPig35/Shotzon-Extensions/main/captcha.user.js).
 3. Click on your desired link.
 
