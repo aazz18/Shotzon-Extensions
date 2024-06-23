@@ -10,37 +10,42 @@
 // @grant        none
 // ==/UserScript==
 
+(function () {
+  "use strict";
 
-(function() {
-    'use strict';
+  function waitForElement(selector, callback, checkFrequencyInMs, timeoutInMs) {
+    const startTimeInMs = Date.now();
+    (function loopSearch() {
+      if (document.querySelector(selector) != null) {
+        callback();
+      } else {
+        setTimeout(function () {
+          if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs) {
+            return;
+          }
+          loopSearch();
+        }, checkFrequencyInMs);
+      }
+    })();
+  }
 
-    function waitForElement(selector, callback, checkFrequencyInMs, timeoutInMs) {
-        const startTimeInMs = Date.now();
-        (function loopSearch() {
-            if (document.querySelector(selector) != null) {
-                callback();
-                return;
-            }
-            else {
-                setTimeout(function() {
-                    if (timeoutInMs && Date.now() - startTimeInMs > timeoutInMs)
-                        return;
-                    loopSearch();
-                }, checkFrequencyInMs);
-            }
-        })();
-    }
+  function getUrlParameter(url, parameter) {
+    const urlParams = new URLSearchParams(new URL(url).search);
+    return urlParams.get(parameter);
+  }
 
-    function getUrlParameter(url, parameter) {
-        const urlParams = new URLSearchParams((new URL(url)).search);
-        return urlParams.get(parameter);
-    }
-
-    waitForElement('a.btn.btn-success.btn-lg.get-link', function() {
-        console.log('Element found!');
-        const element = document.querySelector('a.btn.btn-success.btn-lg.get-link');
-        if (element) {
-            window.location.href = element.href;
-        }
-    }, 100, 10000);
+  waitForElement(
+    "a.btn.btn-success.btn-lg.get-link",
+    function () {
+      console.log("Element found!");
+      const element = document.querySelector(
+        "a.btn.btn-success.btn-lg.get-link",
+      );
+      if (element) {
+        window.location.href = element.href;
+      }
+    },
+    100,
+    10000,
+  );
 })();
