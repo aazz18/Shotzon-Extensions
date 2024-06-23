@@ -8,7 +8,7 @@ Currently, the scripts include:
 
 - **Anti-Anti AdBlock Bypass**: A script that bypasses the anti-adblock function of Shotzon.
 - **First Page Captcha Bypass**: A script that bypasses the captcha on the first page.
-- **Auto Download**: A script that automatically downloads the file in Shotzon when the download timer has finished. 
+- **Auto Download**: A script that automatically downloads the file in Shotzon when the download timer has finished.
 
 Unfortunately, it is **impossible** to bypass the last download page of Shotzon as there is a **server-side check** to see if one has waited 10 seconds to retrieve the link.
 
